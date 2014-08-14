@@ -12,17 +12,17 @@ build:
           echo $ANDROID_BUILD_TOOLS
           echo $ANDROID_UPDATE_FILTER
           echo $ANDROID_NDK_HOME
-    # A step that executes `gradle build` command
-    - script:
-        name: run gradle
-        code: |
-          - android-sdk-update:
-              filter: platform-tools,build-tools-19.1.0,extra-android-m2repository,extra-google-m2repository
-          - android-sdk-update:
-                filter: sys-img-armeabi-v7a-android-18
-          - setup-android-emulator:
-                target: android-20
+    - android-sdk-update:
+        filter: platform-tools,build-tools-19.1.0,extra-android-m2repository,extra-google-m2repository
+    - android-sdk-update:
+        filter: sys-img-armeabi-v7a-android-18
+    - setup-android-emulator:
+        target: android-18
     - script:
         name: testing
         code: |
           gradle --full-stacktrace clean connectedCheck
+    - script:
+        name: package release
+        code: |
+          gradle --full-stacktrace clean packageRelease

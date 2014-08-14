@@ -22,15 +22,7 @@ build:
                 filter: sys-img-armeabi-v7a-android-18
           - setup-android-emulator:
                 target: android-20
-          - script:
-            name: testing
-            code: |
-              gradle --full-stacktrace clean connectedCheck
-          - script:
-              name: package release
-              code: |
-                gradle --full-stacktrace clean packageRelease
-
-
-
-
+    - script:
+        name: testing
+        code: |
+          gradle --full-stacktrace clean connectedCheck

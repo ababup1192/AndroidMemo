@@ -13,9 +13,9 @@ build:
           echo $ANDROID_UPDATE_FILTER
           echo $ANDROID_NDK_HOME
     - android-sdk-update:
-        filter: platform-tools,build-tools-19.1.0,android-19,sysimg-19,extra-android-m2repository
+        filter: platform-tools,build-tools-19.1.0,android-20,sysimg-20,extra-android-m2repository
     - setup-android-emulator:
-        target: android-19
+        target: android-20
     - script:
         name: run gradle connectedCheck
         code: |

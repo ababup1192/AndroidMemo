@@ -13,12 +13,14 @@ build:
           echo $ANDROID_UPDATE_FILTER
           echo $ANDROID_NDK_HOME
     - android-sdk-update:
-        filter: platform-tools,build-tools-19.1.0,extra-android-m2repository,extra-google-m2repository
-    - android-sdk-update:
-        filter: sys-img-armeabi-v7a-android-18
+        filter: sysimg-19
     - setup-android-emulator:
-        target: android-18
+        target: android-19
     - script:
-        name: testing
+        name: chmod gradlew
         code: |
-          ./gradlew --full-stacktrace clean connectedCheck
+          chmod +x gradlew
+    - script:
+        name: run gradle connectedCheck
+        code: |
+          ./gradlew --project-cache-dir=$WERCKER_CACHE_DIR connectedCheck

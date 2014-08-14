@@ -6,7 +6,7 @@ build:
     - script:
         name: show base information
         code: |
-          gradle -v
+          ./gradlew -v
           echo $ANDROID_HOME
           echo $ANDROID_SDK_VERSION
           echo $ANDROID_BUILD_TOOLS
@@ -14,6 +14,8 @@ build:
           echo $ANDROID_NDK_HOME
     - android-sdk-update:
         filter: platform-tools,build-tools-19.1.0,android-19,sysimg-19,extra-android-m2repository
+    - android-sdk-update:
+        sys-img-armeabi-v7a-android-19
     - setup-android-emulator:
         target: android-19
     - script:

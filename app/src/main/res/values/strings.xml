@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">メモ</string>
+    <string name="title_activity_memo">メモ</string>
+
+    <string name="action_new">新規メモ</string>
+    <string name="action_save">保存</string>
+
+    <string name="hint_memo">新規メモ…</string>
+
+</resources>

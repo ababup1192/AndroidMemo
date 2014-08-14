@@ -21,8 +21,4 @@ build:
     - script:
         name: testing
         code: |
-          gradle --full-stacktrace clean connectedCheck
-    - script:
-        name: package release
-        code: |
-          gradle --full-stacktrace clean packageRelease
+          ./gradlew --full-stacktrace clean connectedCheck

@@ -16,4 +16,21 @@ build:
     - script:
         name: run gradle
         code: |
-          gradle --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
+          - android-sdk-update:
+              filter: platform-tools,build-tools-19.1.0,extra-android-m2repository,extra-google-m2repository
+          - android-sdk-update:
+                filter: sys-img-armeabi-v7a-android-18
+          - setup-android-emulator:
+                target: android-20
+          - script:
+            name: testing
+            code: |
+              gradle --full-stacktrace clean connectedCheck
+          - script:
+              name: package release
+              code: |
+                gradle --full-stacktrace clean packageRelease
+
+
+
+
